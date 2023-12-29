@@ -1,5 +1,4 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-// import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import webpack, {Configuration} from 'webpack';
 
