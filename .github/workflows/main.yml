@@ -23,7 +23,7 @@ jobs:
         run: |
           cd remote-controll-web-app
           npm install
-          npm run build:client:prod
+          npm run build:prod
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.1
