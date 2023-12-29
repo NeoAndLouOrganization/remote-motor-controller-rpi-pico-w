@@ -1,0 +1,57 @@
+{
+  "scripts": {
+    "watch:client": "webpack --config webpack.client.dev.ts --watch",
+    "watch:server": "webpack --config webpack.server.dev.ts --watch",
+    "build:client": "webpack --config webpack.client.dev.ts",
+    "build:server": "webpack --config webpack.server.dev.ts",
+    "build:client:prod": "webpack --config webpack.client.prod.ts",
+    "build:server:prod": "webpack --config webpack.server.prod.ts",
+    "start:server": "nodemon ./server-dist/server.js",
+    "start:client": "PORT=3000 webpack serve --config webpack.client.dev.ts",
+    "start:client:prod": "http-server ./dist -p 3000 --cors",
+    "start:server:prod": "node ./server-dist/server.js"
+  },
+  "main": "src/index.tsx",
+  "dependencies": {
+    "@types/react": "^18.2.31",
+    "axios": "^1.5.0",
+    "compression": "^1.7.4",
+    "express": "4.18.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.18.0",
+    "style-loader": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/compression": "^1.7.5",
+    "@types/express": "4.17.17",
+    "@types/react-dom": "^18.2.14",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/webpack-node-externals": "^3.0.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^5.0.1",
+    "file-loader": "^6.2.0",
+    "gts": "^3.1.1",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "nodemon": "^3.0.1",
+    "sass": "^1.65.1",
+    "sass-loader": "^13.3.2",
+    "terser-webpack-plugin": "^5.3.9",
+    "ts-loader": "^9.5.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.4.2",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.10.0",
+    "webpack-node-externals": "^3.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app"
+    ]
+  }
+}
