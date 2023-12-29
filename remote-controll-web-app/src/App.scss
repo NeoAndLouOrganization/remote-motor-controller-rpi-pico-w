@@ -208,6 +208,23 @@ body {
   background: #cc6666;
 }
 
+@media (orientation: landscape) {
+  .title__container {
+    margin-bottom: 30px;
+  }
+
+  .controls-container {
+    margin-right: 40px;
+  }
+
+  .main-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+}
+
 @media (orientation: portrait) {
   .outer-flex-container {
     flex-direction: column-reverse;
