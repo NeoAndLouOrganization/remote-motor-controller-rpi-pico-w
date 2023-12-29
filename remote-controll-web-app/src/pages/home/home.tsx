@@ -1,20 +1,63 @@
-import React, {useState} from 'react';
+import React, {RefObject, useRef, useState} from 'react';
+
+enum Arrows {
+  ArrowLeft = 'left',
+  ArrowRight = 'right',
+  ArrowUp = 'up',
+  ArrowDown = 'down',
+}
 
 const Home = () => {
+  const arrowLeftRef: RefObject<HTMLElement> = useRef(null);
+  const arrowRightRef: RefObject<HTMLElement> = useRef(null);
+  const arrowUpRef: RefObject<HTMLElement> = useRef(null);
+  const arrowDownRef: RefObject<HTMLElement> = useRef(null);
+
   const [isActive, setIsActive] = useState(false);
-  const handleArrowUp = () => {
+
+  const wrapTemporaryPulse = (ref: RefObject<HTMLElement>) => {
+    ref.current?.classList.add('pulse');
+    setTimeout(() => ref.current?.classList.remove('pulse'), 600);
+  };
+
+  const addPulseAnimation = (arrow: string) => {
+    switch (arrow) {
+      case Arrows.ArrowLeft:
+        wrapTemporaryPulse(arrowLeftRef);
+        break;
+      case Arrows.ArrowRight:
+        wrapTemporaryPulse(arrowRightRef);
+        break;
+      case Arrows.ArrowDown:
+        wrapTemporaryPulse(arrowDownRef);
+        break;
+      case Arrows.ArrowUp:
+        wrapTemporaryPulse(arrowUpRef);
+        break;
+      default:
+        break;
+    }
+  };
+  const handleArrowUp = (arrow: string) => {
+    addPulseAnimation(arrow);
     console.log('Arrow Up');
   };
 
-  const handleArrowLeft = () => {
+  const handleArrowLeft = (arrow: string) => {
+    addPulseAnimation(arrow);
+
     console.log('Arrow Left');
   };
 
-  const handleArrowRight = () => {
+  const handleArrowRight = (arrow: string) => {
+    addPulseAnimation(arrow);
+
     console.log('Arrow Right');
   };
 
-  const handleArrowDown = () => {
+  const handleArrowDown = (arrow: string) => {
+    addPulseAnimation(arrow);
+
     console.log('Arrow Bottom');
   };
 
@@ -39,15 +82,36 @@ const Home = () => {
         </div>
 
         <div className="controls-container">
-          <div className="flex-wrapper--arrow-up" onClick={handleArrowUp}>
-            <button className="arrow up"></button>
+          <div className="flex-wrapper--arrow-up">
+            <div className="pulse-wrapper" ref={arrowUpRef}>
+              <button
+                onClick={() => handleArrowUp('up')}
+                className="arrow up"
+              ></button>
+            </div>
           </div>
           <div className="flex-wrapper--side-arrows">
-            <button className="arrow left" onClick={handleArrowLeft}></button>
-            <button className="arrow right" onClick={handleArrowRight}></button>
+            <div className="pulse-wrapper" ref={arrowLeftRef}>
+              <button
+                className="arrow left"
+                onClick={() => handleArrowLeft('left')}
+              ></button>
+            </div>
+
+            <div className="pulse-wrapper" ref={arrowRightRef}>
+              <button
+                className="arrow right"
+                onClick={() => handleArrowRight('right')}
+              ></button>
+            </div>
           </div>
-          <div className="flex-wrapper--arrow-down" onClick={handleArrowDown}>
-            <button className="arrow down"></button>
+          <div className="flex-wrapper--arrow-down">
+            <div className="pulse-wrapper" ref={arrowDownRef}>
+              <button
+                onClick={() => handleArrowDown('down')}
+                className="arrow down"
+              ></button>
+            </div>
           </div>
         </div>
       </div>
