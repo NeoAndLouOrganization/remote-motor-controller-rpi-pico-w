@@ -1,45 +1,45 @@
-import network, rp2, time
-import urequests
-import ujson
-
-WIFI_AP_NAME = 'NEO-e-KIWI-EXT2G'
-WIFI_AP_PWD = 'N9PAGQES'
-
-def setup_network():
-    # set your WiFi Country
-    rp2.country('PT')
-
-    wlan.active(True)
-    # set power mode to get WiFi power-saving off (if needed)
-    wlan.config(pm = 0xa11140)
-    wlan.connect(WIFI_AP_NAME, WIFI_AP_PWD)
-
-    max_wait = 10
-    while max_wait > 0:
-        if wlan.status() < 0 or wlan.status() >= 3:
-            break
-        max_wait -= 1
-        print('waiting for connection...')
-        time.sleep(1)
-
-    if wlan.status() != 3:
-        raise RuntimeError('network connection failed')
-    else:
-        print('connected')
-        status = wlan.ifconfig()
-        print( 'ip = ' + status[0])
-        
-        
+import time
+from machine import Pin
+ 
+# Testing the DC Motors with
+# L293D
+ 
+# Define Pins
+# Motor A
+enable_A = Pin(5, Pin.OUT)
+motor_A1 = Pin(6, Pin.OUT)
+motor_A2 = Pin(7, Pin.OUT)
+  
+# Motor B
+enable_B = Pin(8, Pin.OUT)
+motor_B1 = Pin(9, Pin.OUT)
+motor_B2 = Pin(10, Pin.OUT)
+ 
 def run():
-    while True:
-        try:
-            # Should receive data from client here
-            print("reading data...")
-        except:
-            print("could not connect (status =" + str(wlan.status()) + ")")
-            reconnect()
+  while True:
+    print("Hello Running in While mode")
+    time.sleep_ms(1000)
+    print("Enabling Motors")
+    enable_A.value(1)
+    enable_B.value(1)
+    time.sleep_ms(1000)
+    print("Moving Forward")
+    motor_A1.value(0)
+    motor_A2.value(1)
+    
+    motor_B1.value(0)
+    motor_B2.value(1)
+    time.sleep_ms(1000)
+    print("Moving Backwards")
+    motor_A1.value(1)
+    motor_A2.value(0)
+    
+    motor_B1.value(1)
+    motor_B2.value(0)
+    
+    time.sleep_ms(1000)
+    print("Stopping Motors")
+    enable_A.value(0)
+    enable_B.value(0)
 
-        time.sleep(5)
-        
-        
-setup_network()
+run()
