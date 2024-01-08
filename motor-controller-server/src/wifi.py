@@ -1,9 +1,9 @@
 import network, rp2, time
-import urequests
-import ujson
 
-WIFI_AP_NAME = 'NEO-e-KIWI-EXT2G'
+WIFI_AP_NAME = 'NEO-e-KIWI-2'
 WIFI_AP_PWD = 'N9PAGQES'
+wlan = network.WLAN(network.STA_IF)
+
 
 def setup_network():
     # set your WiFi Country
@@ -13,7 +13,7 @@ def setup_network():
     # set power mode to get WiFi power-saving off (if needed)
     wlan.config(pm = 0xa11140)
     wlan.connect(WIFI_AP_NAME, WIFI_AP_PWD)
-
+    
     max_wait = 10
     while max_wait > 0:
         if wlan.status() < 0 or wlan.status() >= 3:

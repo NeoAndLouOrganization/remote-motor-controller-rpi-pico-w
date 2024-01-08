@@ -190,12 +190,29 @@ body {
   font-size: 20px;
 }
 
+.toggle-led {
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 20px;
+
+  padding: 20px 50px;
+  background: #3f51b5;
+}
+
 .start-engine {
   background: #0f9d58;
 }
 
 .stop-engine {
   background: #cc6666;
+}
+
+.toggle-led--wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 @media (orientation: landscape) {

@@ -14,6 +14,9 @@ const webpackConfig = merge(webpackClientCommonConfig, {
     port: process.env.PORT,
     historyApiFallback: true,
     host: '0.0.0.0',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+    },
     client: {
       overlay: false,
     },

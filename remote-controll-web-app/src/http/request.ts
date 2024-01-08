@@ -1,7 +1,7 @@
 import axios, {AxiosResponse} from 'axios';
 import {HttpRequest} from '../interfaces/http-request';
 
-export const domain = process.env.NODE_SERVER_URL ?? 'http://localhost:3006';
+export const domain = 'http://192.168.2.190:80';
 
 const request = (
   url: string,

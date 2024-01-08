@@ -14,6 +14,10 @@ Using Micropython extension we can create a project. On the bottom nav bar in th
 
 Source - https://mikeesto.medium.com/uploading-to-the-raspberry-pi-pico-without-thonny-53de1a10da30
 
+## Find the right USB in devices
+
+Go to `/dev` folder. Look for tty...
+
 ## Check file contents
 
 `$ ampy --port /dev/tty.usbmodem112301 ls`
@@ -43,3 +47,7 @@ https://docs.micropython.org/en/latest/reference/packages.html
 ## Remove Dir
 
 `$ ampy --port /serial/port rmdir /foo/bar`
+
+## Debug micro controller
+
+`$ screen /dev/tty.usbmodem112201 115200`
